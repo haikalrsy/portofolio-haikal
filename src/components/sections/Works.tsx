@@ -17,7 +17,7 @@ const ProjectCard: React.FC<{ index: number } & TProject> = ({
   sourceCodeLink,
 }) => (
   <motion.div
-    {...fadeIn(index)}
+    {...fadeIn("up", "spring", index * 0.3, 0.75)}
     className="will-change-transform bg-tertiary w-full max-w-[350px] min-w-[280px] rounded-2xl p-5 border border-white shadow-lg"
   >
     <div className="relative h-[200px] sm:h-[230px] w-full">
@@ -75,7 +75,7 @@ const CertificateCard: React.FC<{ index: number } & TCertificate> = ({
   certificateLink,
 }) => (
   <motion.div
-    {...fadeIn(index)}
+    {...fadeIn("up", "spring", index * 0.3, 0.75)}
     className="will-change-transform bg-tertiary w-full max-w-[350px] min-w-[280px] rounded-2xl p-5 border border-white shadow-lg"
   >
     <div className="relative h-[200px] sm:h-[230px] w-full">
