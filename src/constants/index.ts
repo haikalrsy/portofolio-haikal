@@ -20,161 +20,118 @@ import {
   redux,
   tailwind,
   nodejs,
-  mongodb,
+  php,
   git,
   figma,
-  docker,
-  meta,
-  starbucks,
-  tesla,
-  shopify,
+  serti1,
+  tuku,
   carrent,
-  jobit,
-  tripguide,
+  serti2,
   threejs,
+  laravel,
+  serti3,
+  globalvista,
+  cyber,
+  retrolux,
+  AI,
+  phplaravel,
+  cloud,
+  aws,
 } from "../assets";
 
 export const navLinks: TNavLink[] = [
-  {
-    id: "about",
-    title: "About",
-  },
-  {
-    id: "work",
-    title: "Work",
-  },
-  {
-    id: "contact",
-    title: "Contact",
-  },
+  { id: "about", title: "About" },
+  { id: "work", title: "Work" },
+  { id: "contact", title: "Contact" },
 ];
 
 const services: TService[] = [
-  {
-    title: "Web Developer",
-    icon: web,
-  },
-  {
-    title: "React Native Developer",
-    icon: mobile,
-  },
-  {
-    title: "Backend Developer",
-    icon: backend,
-  },
-  {
-    title: "Content Creator",
-    icon: creator,
-  },
+  { title: "Web Developer", icon: web },
+  { title: "Front End Developer", icon: mobile },
+  { title: "Backend Developer", icon: backend },
+  { title: "Application Developer", icon: creator },
 ];
 
 const technologies: TTechnology[] = [
-  {
-    name: "HTML 5",
-    icon: html,
-  },
-  {
-    name: "CSS 3",
-    icon: css,
-  },
-  {
-    name: "JavaScript",
-    icon: javascript,
-  },
-  {
-    name: "TypeScript",
-    icon: typescript,
-  },
-  {
-    name: "React JS",
-    icon: reactjs,
-  },
-  {
-    name: "Redux Toolkit",
-    icon: redux,
-  },
-  {
-    name: "Tailwind CSS",
-    icon: tailwind,
-  },
-  {
-    name: "Node JS",
-    icon: nodejs,
-  },
-  {
-    name: "MongoDB",
-    icon: mongodb,
-  },
-  {
-    name: "Three JS",
-    icon: threejs,
-  },
-  {
-    name: "git",
-    icon: git,
-  },
-  {
-    name: "figma",
-    icon: figma,
-  },
-  {
-    name: "docker",
-    icon: docker,
-  },
+  { name: "HTML 5", icon: html },
+  { name: "CSS 3", icon: css },
+  { name: "JavaScript", icon: javascript },
+  { name: "TypeScript", icon: typescript },
+  { name: "React JS", icon: reactjs },
+  { name: "Redux Toolkit", icon: redux },
+  { name: "Tailwind CSS", icon: tailwind },
+  { name: "Node JS", icon: nodejs },
+  { name: "PHP", icon: php },
+  { name: "Three JS", icon: threejs },
+  { name: "git", icon: git },
+  { name: "figma", icon: figma },
+  { name: "laravel", icon: laravel },
 ];
 
 const experiences: TExperience[] = [
   {
-    title: "React.js Developer",
-    companyName: "Starbucks",
-    icon: starbucks,
-    iconBg: "#383E56",
+    title: "Lomba Sagasitas",
+    companyName: "Tuku",
+    icon: tuku,
+    iconBg: "#ffffffff",
     date: "March 2020 - April 2021",
     points: [
-      "Developing and maintaining web applications using React.js and other related technologies.",
-      "Collaborating with cross-functional teams including designers, product managers, and other developers to create high-quality products.",
-      "Implementing responsive design and ensuring cross-browser compatibility.",
-      "Participating in code reviews and providing constructive feedback to other developers.",
+      "Merupakan Lomba pertama saya di bidang IT",
+      "Di lomba ini saya bersama rekan saya ber 4",
+      "Lomba ini Mengacu pada tema Sekolah Sehat",
     ],
   },
   {
-    title: "React Native Developer",
-    companyName: "Tesla",
-    icon: tesla,
-    iconBg: "#E6DEDD",
+    title: "Pelatihan bersama komdigi",
+    companyName: "Cyber",
+    icon: cyber,
+    iconBg: "#ff0000ff",
     date: "Jan 2021 - Feb 2022",
     points: [
-      "Developing and maintaining web applications using React.js and other related technologies.",
-      "Collaborating with cross-functional teams including designers, product managers, and other developers to create high-quality products.",
-      "Implementing responsive design and ensuring cross-browser compatibility.",
-      "Participating in code reviews and providing constructive feedback to other developers.",
-    ],
+     "Mempelajari dasar-dasar keamanan siber, termasuk enkripsi, firewall, dan keamanan jaringan.",
+  "Melakukan simulasi Ethical Hacking dan Penetration Testing untuk mengidentifikasi serta mengamankan celah pada sistem.",
+  "Mengembangkan strategi manajemen risiko keamanan siber dan kebijakan mitigasi untuk compliance regulasi.",
+  "Melatih respon insiden dan investigasi forensik digital untuk menangani ancaman siber secara efektif.",
+],
   },
   {
-    title: "Web Developer",
-    companyName: "Shopify",
-    icon: shopify,
-    iconBg: "#383E56",
-    date: "Jan 2022 - Jan 2023",
-    points: [
-      "Developing and maintaining web applications using React.js and other related technologies.",
-      "Collaborating with cross-functional teams including designers, product managers, and other developers to create high-quality products.",
-      "Implementing responsive design and ensuring cross-browser compatibility.",
-      "Participating in code reviews and providing constructive feedback to other developers.",
-    ],
-  },
+  title: "Lomba di SMKN 8",
+  companyName: "SMKN 8",
+  icon: cloud, // Ganti dengan ikon yang sesuai jika ada
+  iconBg: "#383E56",
+  date: "2025-Present",
+  points: [
+    "Mengikuti lomba pengembangan aplikasi web dengan menggunakan Html dan Css,Js,Scss, dan berbagai framework yang lumayan banyak.",
+    "Bekerja sama dengan tim yang terdiri dari desainer, pembimbing, dan rekan satu tim untuk menghasilkan proyek berkualitas.",
+    "Menerapkan desain responsif dan memastikan aplikasi dapat berjalan di berbagai jenis browser.",
+    "Melakukan presentasi proyek dan menerima masukan dari juri serta peserta lain untuk peningkatan kualitas.",
+  ],
+},
+ {
+  title: "Pelatihan Laravel Bersama PT Indi Tech",
+  companyName: "Indi Tech",
+  icon: phplaravel, // Bisa diganti dengan ikon pelatihan jika ada
+  iconBg: "#E6DEDD",
+  date: " 2025 - Present",
+  points: [
+    "Mengikuti pelatihan intensif Laravel yang diselenggarakan oleh PT Indi Tech untuk memperdalam pemahaman tentang pengembangan aplikasi web berbasis PHP.",
+    "Mempelajari konsep MVC, routing, blade templating, serta integrasi database menggunakan Eloquent ORM.",
+    "Mengerjakan studi kasus proyek nyata secara individu maupun tim sebagai bagian dari evaluasi pelatihan.",
+    "Mendapatkan arahan dan feedback langsung dari mentor profesional di bidang web development.",
+  ],
+},
   {
-    title: "Full stack Developer",
-    companyName: "Meta",
-    icon: meta,
-    iconBg: "#E6DEDD",
-    date: "Jan 2023 - Present",
-    points: [
-      "Developing and maintaining web applications using React.js and other related technologies.",
-      "Collaborating with cross-functional teams including designers, product managers, and other developers to create high-quality products.",
-      "Implementing responsive design and ensuring cross-browser compatibility.",
-      "Participating in code reviews and providing constructive feedback to other developers.",
-    ],
+    title: "Pelatihan bersama Sagasitas AWS Cloud Computing",
+companyName: "AWS",
+icon: aws,
+iconBg: "#E6DEDD",
+date:  "2025 - Present",
+points: [
+  "Mengikuti pelatihan intensif yang difokuskan pada layanan dan infrastruktur AWS Cloud Computing.",
+  "Melakukan praktik langsung dalam membangun, mengelola, dan mengamankan infrastruktur cloud menggunakan AWS.",
+  "Bekerja dalam tim untuk menyelesaikan studi kasus dan proyek berbasis cloud sesuai dengan standar industri.",
+],
+
   },
 ];
 
@@ -182,7 +139,7 @@ const testimonials: TTestimonial[] = [
   {
     testimonial:
       "I thought it was impossible to make a website as beautiful as our product, but Rick proved me wrong.",
-    name: "Sara Lee",
+    name: "Zidane",
     designation: "CFO",
     company: "Acme Co",
     image: "https://randomuser.me/api/portraits/women/4.jpg",
@@ -190,7 +147,7 @@ const testimonials: TTestimonial[] = [
   {
     testimonial:
       "I've never met a web developer who truly cares about their clients' success like Rick does.",
-    name: "Chris Brown",
+    name: "Filthan",
     designation: "COO",
     company: "DEF Corp",
     image: "https://randomuser.me/api/portraits/men/5.jpg",
@@ -198,77 +155,86 @@ const testimonials: TTestimonial[] = [
   {
     testimonial:
       "After Rick optimized our website, our traffic increased by 50%. We can't thank them enough!",
-    name: "Lisa Wang",
-    designation: "CTO",
-    company: "456 Enterprises",
+    name: "Raffah",
+    designation: "Student",
+    company: "SMKN 46",
     image: "https://randomuser.me/api/portraits/women/6.jpg",
   },
 ];
 
 const projects: TProject[] = [
   {
-    name: "Car Rent",
-    description:
-      "Web-based platform that allows users to search, book, and manage car rentals from various providers, providing a convenient and efficient solution for transportation needs.",
+    name: "Sekolah Sehat",
+    description: "Merupakan Website pertama saya",
     tags: [
-      {
-        name: "react",
-        color: "blue-text-gradient",
-      },
-      {
-        name: "mongodb",
-        color: "green-text-gradient",
-      },
-      {
-        name: "tailwind",
-        color: "pink-text-gradient",
-      },
+      { name: "HTML", color: "blue-text-gradient" },
+      { name: "CSS", color: "green-text-gradient" },
+      { name: "JS", color: "pink-text-gradient" },
     ],
     image: carrent,
     sourceCodeLink: "https://github.com/",
   },
+  // Project tambahanmu
   {
-    name: "Job IT",
-    description:
-      "Web application that enables users to search for job openings, view estimated salary ranges for positions, and locate available jobs based on their current location.",
+    name: "Global Vista",
+    description: "Deskripsi project 1",
     tags: [
-      {
-        name: "react",
-        color: "blue-text-gradient",
-      },
-      {
-        name: "restapi",
-        color: "green-text-gradient",
-      },
-      {
-        name: "scss",
-        color: "pink-text-gradient",
-      },
+      { name: "react", color: "text-blue-500" },
+      { name: "nodejs", color: "text-green-500" },
     ],
-    image: jobit,
-    sourceCodeLink: "https://github.com/",
+    image: globalvista,
+    sourceCodeLink: "https://github.com/yourname/project1",
   },
-  {
-    name: "Trip Guide",
-    description:
-      "A comprehensive travel booking platform that allows users to book flights, hotels, and rental cars, and offers curated recommendations for popular destinations.",
+   {
+    name: "retrolux",
+    description: "Merupakan Website pertama saya",
     tags: [
-      {
-        name: "nextjs",
-        color: "blue-text-gradient",
-      },
-      {
-        name: "supabase",
-        color: "green-text-gradient",
-      },
-      {
-        name: "css",
-        color: "pink-text-gradient",
-      },
+      { name: "HTML", color: "blue-text-gradient" },
+      { name: "CSS", color: "green-text-gradient" },
+      { name: "JS", color: "pink-text-gradient" },
     ],
-    image: tripguide,
+    image: retrolux,
+    sourceCodeLink: "https://github.com/haikalrsy/retro-lux",
+  },
+   {
+    name: "46 Tech",
+    description: "Merupakan Website pertama saya",
+    tags: [
+      { name: "HTML", color: "blue-text-gradient" },
+      { name: "CSS", color: "green-text-gradient" },
+      { name: "JS", color: "pink-text-gradient" },
+    ],
+    image: AI,
     sourceCodeLink: "https://github.com/",
   },
 ];
 
-export { services, technologies, experiences, testimonials, projects };
+const certificates = [
+  {
+    name: "Lomba UTY",
+    issuer: "Web Design",
+    image: serti1,
+    certificateLink: "https://www.freecodecamp.org/certificate/your-link",
+  },
+  {
+    name: "Komdigi Cyber Security",
+    issuer: "Komdigi",
+    image: serti3,
+    certificateLink: "https://www.aws.training/certificate/your-link",
+  },
+  {
+    name: "Lomba SMKN 8",
+    issuer: "Web Design",
+    image: serti2,
+    certificateLink: "https://www.aws.training/certificate/your-link",
+  },
+];
+
+export {
+  services,
+  technologies,
+  experiences,
+  testimonials,
+  projects,
+  certificates,
+};

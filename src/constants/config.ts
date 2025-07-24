@@ -35,18 +35,19 @@ type TConfig = {
     experience: TSection;
     feedbacks: TSection;
     works: Required<TSection>;
+    certificates: Required<TSection>; 
   };
 };
 
 export const config: TConfig = {
   html: {
-    title: "John Doe — 3D Portfolio",
-    fullName: "John Doe",
-    email: "johndoe@mail.com",
+    title: "Haikal — 3D Portfolio",
+    fullName: "Muhammad Haikal Rasyaputra",
+    email: "Muhammad Haikal Rasyaputra",
   },
   hero: {
-    name: "John Doe",
-    p: ["I develop 3D visuals, user", "interfaces and web applications"],
+    name: "Haikal Rasya",
+    p: ["Saya adalah Pelajar Smkn ", "Yang mengambil jurusan Rpl atau Pplg ","yang ingin menjadi full stack developer"],
   },
   contact: {
     p: "Get in touch",
@@ -67,15 +68,12 @@ export const config: TConfig = {
     about: {
       p: "Introduction",
       h2: "Overview.",
-      content: `I'm a skilled software developer with experience in TypeScript and
-      JavaScript, and expertise in frameworks like React, Node.js, and
-      Three.js. I'm a quick learner and collaborate closely with clients to
-      create efficient, scalable, and user-friendly solutions that solve
-      real-world problems. Let's work together to bring your ideas to life!`,
+      content: `Saya adalah seorang siswa SMKN 46 Jakarta yang mengambil jurusan Rekayasa Perangkat Lunak (RPL). Saya memiliki minat yang besar di bidang teknologi dan terus belajar untuk mengembangkan kemampuan saya sebagai calon Fullstack Developer.
+Selama masa belajar, saya aktif mengikuti berbagai lomba, pelatihan, dan kegiatan pembelajaran untuk memperluas wawasan serta meningkatkan keterampilan di dunia pemrograman. Saya bersemangat untuk terus belajar teknologi baru, membangun solusi yang bermanfaat, dan siap berkolaborasi untuk mewujudkan ide-ide menjadi aplikasi nyata.`,
     },
     experience: {
-      p: "What I have done so far",
-      h2: "Work Experience.",
+      p: "What I  have done so far",
+      h2: "My Experience.",
     },
     feedbacks: {
       p: "What others say",
@@ -84,11 +82,13 @@ export const config: TConfig = {
     works: {
       p: "My work",
       h2: "Projects.",
-      content: `Following projects showcases my skills and experience through
-    real-world examples of my work. Each project is briefly described with
-    links to code repositories and live demos in it. It reflects my
-    ability to solve complex problems, work with different technologies,
-    and manage projects effectively.`,
+      content: `Berikut adalah beberapa proyek unggulan yang saya kembangkan selama perjalanan saya di dunia teknologi. Setiap karya lahir dari proses eksplorasi ide, riset mendalam, hingga implementasi yang berfokus pada pengalaman pengguna. Semua ini mencerminkan semangat saya untuk terus berinovasi melalui desain dan pengembangan digital.`,
     },
+  certificates: {
+    p: "My Achievements",
+    h2: "Certificates.",
+    content: "Ini adalah sertifikat yang sudah saya peroleh.",
   },
-};
+},
+
+  };

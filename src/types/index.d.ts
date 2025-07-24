@@ -42,3 +42,9 @@ export type TMotion = {
   delay: number;
   duration: number;
 };
+export type TCertificate = {
+  name: string;
+  issuer: string;
+  image: string;
+  certificateLink: string;
+};
