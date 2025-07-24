@@ -1,19 +1,25 @@
+import { motion } from "framer-motion";
 import { github } from "../../assets";
 import { SectionWrapper } from "../../hoc";
 import { projects, certificates } from "../../constants";
+import { fadeIn } from "../../utils/motion";
 import { config } from "../../constants/config";
 import { Header } from "../atoms/Header";
 import { TProject, TCertificate } from "../../types";
 
 // ------------------- Project Card -------------------
-const ProjectCard: React.FC<TProject> = ({
+const ProjectCard: React.FC<{ index: number } & TProject> = ({
+  index,
   name,
   description,
   tags,
   image,
   sourceCodeLink,
 }) => (
-  <div className="bg-tertiary w-full max-w-[350px] min-w-[280px] rounded-2xl p-5 border border-white shadow-lg">
+  <motion.div
+    {...fadeIn(index)}
+    className="will-change-transform bg-tertiary w-full max-w-[350px] min-w-[280px] rounded-2xl p-5 border border-white shadow-lg"
+  >
     <div className="relative h-[200px] sm:h-[230px] w-full">
       <img
         src={image}
@@ -57,17 +63,21 @@ const ProjectCard: React.FC<TProject> = ({
         </span>
       ))}
     </div>
-  </div>
+  </motion.div>
 );
 
 // ------------------- Certificate Card -------------------
-const CertificateCard: React.FC<TCertificate> = ({
+const CertificateCard: React.FC<{ index: number } & TCertificate> = ({
+  index,
   name,
   issuer,
   image,
   certificateLink,
 }) => (
-  <div className="bg-tertiary w-full max-w-[350px] min-w-[280px] rounded-2xl p-5 border border-white shadow-lg">
+  <motion.div
+    {...fadeIn(index)}
+    className="will-change-transform bg-tertiary w-full max-w-[350px] min-w-[280px] rounded-2xl p-5 border border-white shadow-lg"
+  >
     <div className="relative h-[200px] sm:h-[230px] w-full">
       <img
         src={image}
@@ -103,14 +113,13 @@ const CertificateCard: React.FC<TCertificate> = ({
       <h3 className="text-lg sm:text-xl font-bold text-white">{name}</h3>
       <p className="text-gray-300 mt-2 text-sm">Issued by: {issuer}</p>
     </div>
-  </div>
+  </motion.div>
 );
 
 // ------------------- Works Section -------------------
 const Works = () => {
   return (
     <div className="w-full">
-      {/* Project Section */}
       <Header useMotion={false} {...config.sections.works} />
       <p className="text-gray-300 mt-3 max-w-3xl text-base sm:text-lg leading-relaxed">
         {config.sections.works.content}
@@ -119,12 +128,11 @@ const Works = () => {
       <div className="mt-12 sm:mt-20 flex flex-wrap justify-center gap-6 sm:gap-8 px-4">
         {projects.slice(0, 4).map((project, index) => (
           <div key={`project-${index}`} className="flex-shrink-0">
-            <ProjectCard {...project} />
+            <ProjectCard index={index} {...project} />
           </div>
         ))}
       </div>
 
-      {/* Certificate Section */}
       <div className="mt-20">
         <Header useMotion={false} {...config.sections.certificates} />
         <p className="text-gray-300 mt-3 max-w-3xl text-base sm:text-lg leading-relaxed">
@@ -134,7 +142,7 @@ const Works = () => {
         <div className="mt-12 sm:mt-20 flex flex-wrap justify-center gap-6 sm:gap-8 px-4">
           {certificates.map((certificate, index) => (
             <div key={`certificate-${index}`} className="flex-shrink-0">
-              <CertificateCard {...certificate} />
+              <CertificateCard index={index} {...certificate} />
             </div>
           ))}
         </div>
