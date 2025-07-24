@@ -1,15 +1,12 @@
-import { motion } from "framer-motion";
 import { github } from "../../assets";
 import { SectionWrapper } from "../../hoc";
 import { projects, certificates } from "../../constants";
-import { fadeIn } from "../../utils/motion";
 import { config } from "../../constants/config";
 import { Header } from "../atoms/Header";
 import { TProject, TCertificate } from "../../types";
 
 // ------------------- Project Card -------------------
-const ProjectCard: React.FC<{ index: number } & TProject> = ({
-  index,
+const ProjectCard: React.FC<TProject> = ({
   name,
   description,
   tags,
@@ -36,28 +33,23 @@ const ProjectCard: React.FC<{ index: number } & TProject> = ({
           }
         }}
       />
-      
-      {/* Always visible button - works on both mobile and desktop */}
+
       <div className="absolute bottom-3 right-3">
         <button
           onClick={() => window.open(sourceCodeLink, "_blank")}
           className="bg-black bg-opacity-90 hover:bg-opacity-100 flex h-10 w-10 cursor-pointer items-center justify-center rounded-full transition-all duration-200 hover:scale-110"
           title="View Source Code"
         >
-          <img
-            src={github}
-            alt="github"
-            className="h-5 w-5 object-contain"
-          />
+          <img src={github} alt="github" className="h-5 w-5 object-contain" />
         </button>
       </div>
     </div>
-    
+
     <div className="mt-5">
       <h3 className="text-xl sm:text-2xl font-bold text-white">{name}</h3>
       <p className="text-gray-300 mt-2 text-sm leading-relaxed">{description}</p>
     </div>
-    
+
     <div className="mt-4 flex flex-wrap gap-2">
       {tags.map((tag) => (
         <span key={tag.name} className={`text-xs px-2 py-1 rounded ${tag.color}`}>
@@ -69,8 +61,7 @@ const ProjectCard: React.FC<{ index: number } & TProject> = ({
 );
 
 // ------------------- Certificate Card -------------------
-const CertificateCard: React.FC<{ index: number } & TCertificate> = ({
-  index,
+const CertificateCard: React.FC<TCertificate> = ({
   name,
   issuer,
   image,
@@ -96,8 +87,7 @@ const CertificateCard: React.FC<{ index: number } & TCertificate> = ({
           }
         }}
       />
-      
-      {/* Always visible button - works on both mobile and desktop */}
+
       <div className="absolute bottom-3 right-3">
         <button
           onClick={() => window.open(certificateLink, "_blank")}
@@ -108,7 +98,7 @@ const CertificateCard: React.FC<{ index: number } & TCertificate> = ({
         </button>
       </div>
     </div>
-    
+
     <div className="mt-5">
       <h3 className="text-lg sm:text-xl font-bold text-white">{name}</h3>
       <p className="text-gray-300 mt-2 text-sm">Issued by: {issuer}</p>
@@ -122,7 +112,6 @@ const Works = () => {
     <div className="w-full">
       {/* Project Section */}
       <Header useMotion={false} {...config.sections.works} />
-
       <p className="text-gray-300 mt-3 max-w-3xl text-base sm:text-lg leading-relaxed">
         {config.sections.works.content}
       </p>
@@ -130,7 +119,7 @@ const Works = () => {
       <div className="mt-12 sm:mt-20 flex flex-wrap justify-center gap-6 sm:gap-8 px-4">
         {projects.slice(0, 4).map((project, index) => (
           <div key={`project-${index}`} className="flex-shrink-0">
-            <ProjectCard index={index} {...project} />
+            <ProjectCard {...project} />
           </div>
         ))}
       </div>
@@ -138,7 +127,6 @@ const Works = () => {
       {/* Certificate Section */}
       <div className="mt-20">
         <Header useMotion={false} {...config.sections.certificates} />
-
         <p className="text-gray-300 mt-3 max-w-3xl text-base sm:text-lg leading-relaxed">
           {config.sections.certificates.content}
         </p>
@@ -146,7 +134,7 @@ const Works = () => {
         <div className="mt-12 sm:mt-20 flex flex-wrap justify-center gap-6 sm:gap-8 px-4">
           {certificates.map((certificate, index) => (
             <div key={`certificate-${index}`} className="flex-shrink-0">
-              <CertificateCard index={index} {...certificate} />
+              <CertificateCard {...certificate} />
             </div>
           ))}
         </div>
