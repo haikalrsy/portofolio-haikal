@@ -140,16 +140,16 @@ const testimonials: TTestimonial[] = [
     testimonial:
       "I thought it was impossible to make a website as beautiful as our product, but Rick proved me wrong.",
     name: "Zidane",
-    designation: "CFO",
-    company: "Acme Co",
+    designation: "Student",
+    company: "Smkn 46",
     image: "https://randomuser.me/api/portraits/women/4.jpg",
   },
   {
     testimonial:
       "I've never met a web developer who truly cares about their clients' success like Rick does.",
     name: "Filthan",
-    designation: "COO",
-    company: "DEF Corp",
+    designation: "Student",
+    company: "Smkn 46",
     image: "https://randomuser.me/api/portraits/men/5.jpg",
   },
   {
@@ -157,7 +157,7 @@ const testimonials: TTestimonial[] = [
       "After Rick optimized our website, our traffic increased by 50%. We can't thank them enough!",
     name: "Raffah",
     designation: "Student",
-    company: "SMKN 46",
+    company: "Smkn 46",
     image: "https://randomuser.me/api/portraits/women/6.jpg",
   },
 ];
