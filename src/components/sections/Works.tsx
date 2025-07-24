@@ -13,8 +13,7 @@ const fadeInUp = {
 };
 
 // ------------------- Project Card -------------------
-const ProjectCard: React.FC<{ index: number } & TProject> = ({
-  index,
+const ProjectCard: React.FC<TProject> = ({
   name,
   description,
   tags,
@@ -47,7 +46,6 @@ const ProjectCard: React.FC<{ index: number } & TProject> = ({
           }
         }}
       />
-
       <div className="absolute bottom-3 right-3">
         <button
           onClick={() => window.open(sourceCodeLink, "_blank")}
@@ -75,8 +73,7 @@ const ProjectCard: React.FC<{ index: number } & TProject> = ({
 );
 
 // ------------------- Certificate Card -------------------
-const CertificateCard: React.FC<{ index: number } & TCertificate> = ({
-  index,
+const CertificateCard: React.FC<TCertificate> = ({
   name,
   issuer,
   image,
@@ -108,7 +105,6 @@ const CertificateCard: React.FC<{ index: number } & TCertificate> = ({
           }
         }}
       />
-
       <div className="absolute bottom-3 right-3">
         <button
           onClick={() => window.open(certificateLink, "_blank")}
@@ -147,7 +143,7 @@ const Works = () => {
       <div className="mt-12 sm:mt-20 flex flex-wrap justify-center gap-6 sm:gap-8 px-4">
         {projects.slice(0, 4).map((project, index) => (
           <div key={`project-${index}`} className="flex-shrink-0">
-            <ProjectCard index={index} {...project} />
+            <ProjectCard {...project} />
           </div>
         ))}
       </div>
@@ -169,7 +165,7 @@ const Works = () => {
         <div className="mt-12 sm:mt-20 flex flex-wrap justify-center gap-6 sm:gap-8 px-4">
           {certificates.map((certificate, index) => (
             <div key={`certificate-${index}`} className="flex-shrink-0">
-              <CertificateCard index={index} {...certificate} />
+              <CertificateCard {...certificate} />
             </div>
           ))}
         </div>
