@@ -32,11 +32,33 @@ const ProjectCard: React.FC<{ index: number } & TProject> = ({
             src={image}
             alt={name}
             className="h-full w-full rounded-2xl object-cover"
+            loading="eager"
+            onError={(e) => {
+              console.log('Image failed to load:', image);
+              e.currentTarget.style.display = 'none';
+            }}
+            onLoad={(e) => {
+              e.currentTarget.style.opacity = '1';
+            }}
+            style={{ opacity: 0, transition: 'opacity 0.3s ease' }}
           />
-          <div className="card-img_hover absolute inset-0 m-3 flex justify-end">
+          <div className="absolute inset-0 m-3 flex justify-end opacity-0 hover:opacity-100 transition-opacity duration-300 md:opacity-0 md:hover:opacity-100">
             <div
               onClick={() => window.open(sourceCodeLink, "_blank")}
               className="black-gradient flex h-10 w-10 cursor-pointer items-center justify-center rounded-full"
+            >
+              <img
+                src={github}
+                alt="github"
+                className="h-1/2 w-1/2 object-contain"
+              />
+            </div>
+          </div>
+          {/* Mobile button - always visible */}
+          <div className="absolute bottom-3 right-3 md:hidden">
+            <div
+              onClick={() => window.open(sourceCodeLink, "_blank")}
+              className="black-gradient flex h-8 w-8 cursor-pointer items-center justify-center rounded-full"
             >
               <img
                 src={github}
@@ -84,13 +106,31 @@ const CertificateCard: React.FC<{ index: number } & TCertificate> = ({
             src={image}
             alt={name}
             className="h-full w-full rounded-2xl object-cover"
+            loading="eager"
+            onError={(e) => {
+              console.log('Certificate image failed to load:', image);
+              e.currentTarget.style.display = 'none';
+            }}
+            onLoad={(e) => {
+              e.currentTarget.style.opacity = '1';
+            }}
+            style={{ opacity: 0, transition: 'opacity 0.3s ease' }}
           />
-          <div className="card-img_hover absolute inset-0 m-3 flex justify-end">
+          <div className="absolute inset-0 m-3 flex justify-end opacity-0 hover:opacity-100 transition-opacity duration-300 md:opacity-0 md:hover:opacity-100">
             <div
               onClick={() => window.open(certificateLink, "_blank")}
               className="black-gradient flex h-10 w-10 cursor-pointer items-center justify-center rounded-full"
             >
               <span className="text-white text-[10px] sm:text-[12px] font-medium">View</span>
+            </div>
+          </div>
+          {/* Mobile button - always visible */}
+          <div className="absolute bottom-3 right-3 md:hidden">
+            <div
+              onClick={() => window.open(certificateLink, "_blank")}
+              className="black-gradient flex h-8 w-8 cursor-pointer items-center justify-center rounded-full"
+            >
+              <span className="text-white text-[9px] font-medium">View</span>
             </div>
           </div>
         </div>
