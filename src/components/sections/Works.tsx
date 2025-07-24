@@ -1,7 +1,4 @@
-import Tilt from "react-parallax-tilt";
 import { motion } from "framer-motion";
-import { useState, useEffect } from "react";
-
 import { github } from "../../assets";
 import { SectionWrapper } from "../../hoc";
 import { projects, certificates } from "../../constants";
@@ -9,27 +6,6 @@ import { fadeIn } from "../../utils/motion";
 import { config } from "../../constants/config";
 import { Header } from "../atoms/Header";
 import { TProject, TCertificate } from "../../types";
-
-// Hook untuk detect mobile
-const useIsMobile = () => {
-  const [isMobile, setIsMobile] = useState(false);
-  
-  useEffect(() => {
-    const checkIsMobile = () => {
-      setIsMobile(window.innerWidth < 768);
-    };
-    
-    // Check on mount
-    checkIsMobile();
-    
-    // Listen untuk resize
-    window.addEventListener('resize', checkIsMobile);
-    
-    return () => window.removeEventListener('resize', checkIsMobile);
-  }, []);
-  
-  return isMobile;
-};
 
 // ------------------- Project Card -------------------
 const ProjectCard: React.FC<{ index: number } & TProject> = ({
@@ -39,98 +15,58 @@ const ProjectCard: React.FC<{ index: number } & TProject> = ({
   tags,
   image,
   sourceCodeLink,
-}) => {
-  const isMobile = useIsMobile();
-
-  const cardContent = (
-    <div className="bg-tertiary w-full max-w-[350px] min-w-[280px] rounded-2xl p-5 border border-white">
-      <div className="relative h-[200px] sm:h-[230px] w-full">
-        <img
-          src={image}
-          alt={name}
-          className="h-full w-full rounded-2xl object-cover"
-          loading="eager"
-          onError={(e) => {
-            console.log('Image failed to load:', image);
-            const target = e.currentTarget;
-            target.style.backgroundColor = '#1a1a1a';
-            target.style.display = 'flex';
-            target.style.alignItems = 'center';
-            target.style.justifyContent = 'center';
-            target.innerHTML = '<span style="color: white; font-size: 14px;">Image not available</span>';
-          }}
-        />
-        
-        {/* Desktop hover button */}
-        {!isMobile && (
-          <div className="absolute inset-0 m-3 flex justify-end opacity-0 hover:opacity-100 transition-opacity duration-300">
-            <div
-              onClick={() => window.open(sourceCodeLink, "_blank")}
-              className="bg-black bg-opacity-80 flex h-10 w-10 cursor-pointer items-center justify-center rounded-full backdrop-blur-sm"
-            >
-              <img
-                src={github}
-                alt="github"
-                className="h-1/2 w-1/2 object-contain"
-              />
-            </div>
-          </div>
-        )}
-        
-        {/* Mobile always visible button */}
-        {isMobile && (
-          <div className="absolute bottom-3 right-3">
-            <div
-              onClick={() => window.open(sourceCodeLink, "_blank")}
-              className="bg-black bg-opacity-80 flex h-8 w-8 cursor-pointer items-center justify-center rounded-full backdrop-blur-sm"
-            >
-              <img
-                src={github}
-                alt="github"
-                className="h-1/2 w-1/2 object-contain"
-              />
-            </div>
-          </div>
-        )}
-      </div>
+}) => (
+  <div className="bg-tertiary w-full max-w-[350px] min-w-[280px] rounded-2xl p-5 border border-white shadow-lg">
+    <div className="relative h-[200px] sm:h-[230px] w-full">
+      <img
+        src={image}
+        alt={name}
+        className="h-full w-full rounded-2xl object-cover"
+        onError={(e) => {
+          console.log('Project image failed to load:', image);
+          const target = e.currentTarget as HTMLImageElement;
+          target.style.display = 'none';
+          const parent = target.parentElement;
+          if (parent) {
+            parent.innerHTML = `
+              <div class="h-full w-full rounded-2xl bg-zinc-800 flex items-center justify-center">
+                <span class="text-white text-sm">Image not available</span>
+              </div>
+            `;
+          }
+        }}
+      />
       
-      <div className="mt-5">
-        <h3 className="text-[20px] sm:text-[24px] font-bold text-white">{name}</h3>
-        <p className="text-secondary mt-2 text-[13px] sm:text-[14px] leading-relaxed">{description}</p>
-      </div>
-      
-      <div className="mt-4 flex flex-wrap gap-2">
-        {tags.map((tag) => (
-          <p key={tag.name} className={`text-[12px] sm:text-[14px] ${tag.color}`}>
-            #{tag.name}
-          </p>
-        ))}
+      {/* Always visible button - works on both mobile and desktop */}
+      <div className="absolute bottom-3 right-3">
+        <button
+          onClick={() => window.open(sourceCodeLink, "_blank")}
+          className="bg-black bg-opacity-90 hover:bg-opacity-100 flex h-10 w-10 cursor-pointer items-center justify-center rounded-full transition-all duration-200 hover:scale-110"
+          title="View Source Code"
+        >
+          <img
+            src={github}
+            alt="github"
+            className="h-5 w-5 object-contain"
+          />
+        </button>
       </div>
     </div>
-  );
-
-  return (
-    <motion.div variants={fadeIn("up", "spring", index * 0.5, 0.75)}>
-      {isMobile ? (
-        // Mobile: Simple card with scale effect
-        <div className="transform hover:scale-105 transition-transform duration-300">
-          {cardContent}
-        </div>
-      ) : (
-        // Desktop: Tilt effect
-        <Tilt
-          glareEnable
-          tiltEnable
-          tiltMaxAngleX={30}
-          tiltMaxAngleY={30}
-          glareColor="#867bcaff"
-        >
-          {cardContent}
-        </Tilt>
-      )}
-    </motion.div>
-  );
-};
+    
+    <div className="mt-5">
+      <h3 className="text-xl sm:text-2xl font-bold text-white">{name}</h3>
+      <p className="text-gray-300 mt-2 text-sm leading-relaxed">{description}</p>
+    </div>
+    
+    <div className="mt-4 flex flex-wrap gap-2">
+      {tags.map((tag) => (
+        <span key={tag.name} className={`text-xs px-2 py-1 rounded ${tag.color}`}>
+          #{tag.name}
+        </span>
+      ))}
+    </div>
+  </div>
+);
 
 // ------------------- Certificate Card -------------------
 const CertificateCard: React.FC<{ index: number } & TCertificate> = ({
@@ -139,125 +75,83 @@ const CertificateCard: React.FC<{ index: number } & TCertificate> = ({
   issuer,
   image,
   certificateLink,
-}) => {
-  const isMobile = useIsMobile();
-
-  const cardContent = (
-    <div className="bg-tertiary w-full max-w-[350px] min-w-[280px] rounded-2xl p-5 border border-white">
-      <div className="relative h-[200px] sm:h-[230px] w-full">
-        <img
-          src={image}
-          alt={name}
-          className="h-full w-full rounded-2xl object-cover"
-          loading="eager"
-          onError={(e) => {
-            console.log('Certificate image failed to load:', image);
-            const target = e.currentTarget;
-            target.style.backgroundColor = '#1a1a1a';
-            target.style.display = 'flex';
-            target.style.alignItems = 'center';
-            target.style.justifyContent = 'center';
-            target.innerHTML = '<span style="color: white; font-size: 14px;">Certificate not available</span>';
-          }}
-        />
-        
-        {/* Desktop hover button */}
-        {!isMobile && (
-          <div className="absolute inset-0 m-3 flex justify-end opacity-0 hover:opacity-100 transition-opacity duration-300">
-            <div
-              onClick={() => window.open(certificateLink, "_blank")}
-              className="bg-black bg-opacity-80 flex h-10 w-10 cursor-pointer items-center justify-center rounded-full backdrop-blur-sm"
-            >
-              <span className="text-white text-[10px] sm:text-[12px] font-medium">View</span>
-            </div>
-          </div>
-        )}
-        
-        {/* Mobile always visible button */}
-        {isMobile && (
-          <div className="absolute bottom-3 right-3">
-            <div
-              onClick={() => window.open(certificateLink, "_blank")}
-              className="bg-black bg-opacity-80 flex h-8 w-8 cursor-pointer items-center justify-center rounded-full backdrop-blur-sm"
-            >
-              <span className="text-white text-[9px] font-medium">View</span>
-            </div>
-          </div>
-        )}
-      </div>
+}) => (
+  <div className="bg-tertiary w-full max-w-[350px] min-w-[280px] rounded-2xl p-5 border border-white shadow-lg">
+    <div className="relative h-[200px] sm:h-[230px] w-full">
+      <img
+        src={image}
+        alt={name}
+        className="h-full w-full rounded-2xl object-cover"
+        onError={(e) => {
+          console.log('Certificate image failed to load:', image);
+          const target = e.currentTarget as HTMLImageElement;
+          target.style.display = 'none';
+          const parent = target.parentElement;
+          if (parent) {
+            parent.innerHTML = `
+              <div class="h-full w-full rounded-2xl bg-zinc-800 flex items-center justify-center">
+                <span class="text-white text-sm">Certificate not available</span>
+              </div>
+            `;
+          }
+        }}
+      />
       
-      <div className="mt-5">
-        <h3 className="text-[18px] sm:text-[20px] font-bold text-white">{name}</h3>
-        <p className="text-secondary mt-2 text-[13px] sm:text-[14px]">Issued by: {issuer}</p>
+      {/* Always visible button - works on both mobile and desktop */}
+      <div className="absolute bottom-3 right-3">
+        <button
+          onClick={() => window.open(certificateLink, "_blank")}
+          className="bg-black bg-opacity-90 hover:bg-opacity-100 flex h-10 w-10 cursor-pointer items-center justify-center rounded-full transition-all duration-200 hover:scale-110"
+          title="View Certificate"
+        >
+          <span className="text-white text-xs font-medium">View</span>
+        </button>
       </div>
     </div>
-  );
-
-  return (
-    <motion.div variants={fadeIn("up", "spring", index * 0.5, 0.75)}>
-      {isMobile ? (
-        // Mobile: Simple card with scale effect
-        <div className="transform hover:scale-105 transition-transform duration-300">
-          {cardContent}
-        </div>
-      ) : (
-        // Desktop: Tilt effect
-        <Tilt
-          glareEnable
-          tiltEnable
-          tiltMaxAngleX={30}
-          tiltMaxAngleY={30}
-          glareColor="#867bcaff"
-        >
-          {cardContent}
-        </Tilt>
-      )}
-    </motion.div>
-  );
-};
+    
+    <div className="mt-5">
+      <h3 className="text-lg sm:text-xl font-bold text-white">{name}</h3>
+      <p className="text-gray-300 mt-2 text-sm">Issued by: {issuer}</p>
+    </div>
+  </div>
+);
 
 // ------------------- Works Section -------------------
 const Works = () => {
   return (
-    <>
+    <div className="w-full">
       {/* Project Section */}
-      <Header useMotion={true} {...config.sections.works} />
+      <Header useMotion={false} {...config.sections.works} />
 
-      <motion.p
-        variants={fadeIn("", "", 0.1, 1)}
-        className="text-secondary mt-3 max-w-3xl text-[15px] sm:text-[17px] leading-[28px] sm:leading-[30px]"
-      >
+      <p className="text-gray-300 mt-3 max-w-3xl text-base sm:text-lg leading-relaxed">
         {config.sections.works.content}
-      </motion.p>
+      </p>
 
-      <div className="mt-12 sm:mt-20 flex flex-wrap justify-center gap-6 sm:gap-7 px-2 sm:px-4">
+      <div className="mt-12 sm:mt-20 flex flex-wrap justify-center gap-6 sm:gap-8 px-4">
         {projects.slice(0, 4).map((project, index) => (
-          <ProjectCard key={`project-${index}`} index={index} {...project} />
+          <div key={`project-${index}`} className="flex-shrink-0">
+            <ProjectCard index={index} {...project} />
+          </div>
         ))}
       </div>
 
       {/* Certificate Section */}
-      <div className="mt-16 sm:mt-20">
-        <Header useMotion={true} {...config.sections.certificates} />
+      <div className="mt-20">
+        <Header useMotion={false} {...config.sections.certificates} />
 
-        <motion.p
-          variants={fadeIn("", "", 0.1, 1)}
-          className="text-secondary mt-3 max-w-3xl text-[15px] sm:text-[17px] leading-[28px] sm:leading-[30px]"
-        >
+        <p className="text-gray-300 mt-3 max-w-3xl text-base sm:text-lg leading-relaxed">
           {config.sections.certificates.content}
-        </motion.p>
+        </p>
 
-        <div className="mt-12 sm:mt-20 flex flex-wrap justify-center gap-6 sm:gap-7 px-2 sm:px-4">
+        <div className="mt-12 sm:mt-20 flex flex-wrap justify-center gap-6 sm:gap-8 px-4">
           {certificates.map((certificate, index) => (
-            <CertificateCard
-              key={`certificate-${index}`}
-              index={index}
-              {...certificate}
-            />
+            <div key={`certificate-${index}`} className="flex-shrink-0">
+              <CertificateCard index={index} {...certificate} />
+            </div>
           ))}
         </div>
       </div>
-    </>
+    </div>
   );
 };
 
