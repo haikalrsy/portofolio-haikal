@@ -214,7 +214,7 @@ const Works = () => {
               <CertificateCard index={index} {...certificate} />
             </div>
           ))}
-        </div>
+        </motion.div>
       </motion.div>
     </motion.div>
   );
