@@ -26,9 +26,8 @@ const ProjectCard: React.FC<{ index: number } & TProject> = ({
       tiltMaxAngleY={30}
       glareColor="#867bcaff"
     >
-<div className="bg-tertiary w-full rounded-2xl p-5 sm:w-[300px] border border-white">
-
-        <div className="relative h-[230px] w-full">
+      <div className="bg-tertiary w-full max-w-[350px] min-w-[280px] rounded-2xl p-5 border border-white">
+        <div className="relative h-[200px] sm:h-[230px] w-full">
           <img
             src={image}
             alt={name}
@@ -48,12 +47,12 @@ const ProjectCard: React.FC<{ index: number } & TProject> = ({
           </div>
         </div>
         <div className="mt-5">
-          <h3 className="text-[24px] font-bold text-white">{name}</h3>
-          <p className="text-secondary mt-2 text-[14px]">{description}</p>
+          <h3 className="text-[20px] sm:text-[24px] font-bold text-white">{name}</h3>
+          <p className="text-secondary mt-2 text-[13px] sm:text-[14px] leading-relaxed">{description}</p>
         </div>
         <div className="mt-4 flex flex-wrap gap-2">
           {tags.map((tag) => (
-            <p key={tag.name} className={`text-[14px] ${tag.color}`}>
+            <p key={tag.name} className={`text-[12px] sm:text-[14px] ${tag.color}`}>
               #{tag.name}
             </p>
           ))}
@@ -79,9 +78,8 @@ const CertificateCard: React.FC<{ index: number } & TCertificate> = ({
       tiltMaxAngleY={30}
       glareColor="#867bcaff"
     >
-<div className="bg-tertiary w-full rounded-2xl p-5 sm:w-[300px] border border-white">
-
-        <div className="relative h-[230px] w-full">
+      <div className="bg-tertiary w-full max-w-[350px] min-w-[280px] rounded-2xl p-5 border border-white">
+        <div className="relative h-[200px] sm:h-[230px] w-full">
           <img
             src={image}
             alt={name}
@@ -92,13 +90,13 @@ const CertificateCard: React.FC<{ index: number } & TCertificate> = ({
               onClick={() => window.open(certificateLink, "_blank")}
               className="black-gradient flex h-10 w-10 cursor-pointer items-center justify-center rounded-full"
             >
-              <span className="text-white text-[12px]">View</span>
+              <span className="text-white text-[10px] sm:text-[12px] font-medium">View</span>
             </div>
           </div>
         </div>
         <div className="mt-5">
-          <h3 className="text-[20px] font-bold text-white">{name}</h3>
-          <p className="text-secondary mt-2 text-[14px]">Issued by: {issuer}</p>
+          <h3 className="text-[18px] sm:text-[20px] font-bold text-white">{name}</h3>
+          <p className="text-secondary mt-2 text-[13px] sm:text-[14px]">Issued by: {issuer}</p>
         </div>
       </div>
     </Tilt>
@@ -114,35 +112,37 @@ const Works = () => {
 
       <motion.p
         variants={fadeIn("", "", 0.1, 1)}
-        className="text-secondary mt-3 max-w-3xl text-[17px] leading-[30px]"
+        className="text-secondary mt-3 max-w-3xl text-[15px] sm:text-[17px] leading-[28px] sm:leading-[30px]"
       >
         {config.sections.works.content}
       </motion.p>
 
-      <div className="mt-20 flex flex-wrap justify-center gap-7 px-4">
+      <div className="mt-12 sm:mt-20 flex flex-wrap justify-center gap-6 sm:gap-7 px-2 sm:px-4">
         {projects.slice(0, 4).map((project, index) => (
           <ProjectCard key={`project-${index}`} index={index} {...project} />
         ))}
       </div>
 
       {/* Certificate Section */}
-      <Header useMotion={true} {...config.sections.certificates} />
+      <div className="mt-16 sm:mt-20">
+        <Header useMotion={true} {...config.sections.certificates} />
 
-      <motion.p
-        variants={fadeIn("", "", 0.1, 1)}
-        className="text-secondary mt-3 max-w-3xl text-[17px] leading-[30px]"
-      >
-        {config.sections.certificates.content}
-      </motion.p>
+        <motion.p
+          variants={fadeIn("", "", 0.1, 1)}
+          className="text-secondary mt-3 max-w-3xl text-[15px] sm:text-[17px] leading-[28px] sm:leading-[30px]"
+        >
+          {config.sections.certificates.content}
+        </motion.p>
 
-      <div className="mt-20 flex flex-wrap justify-center gap-7 px-4">
-        {certificates.map((certificate, index) => (
-          <CertificateCard
-            key={`certificate-${index}`}
-            index={index}
-            {...certificate}
-          />
-        ))}
+        <div className="mt-12 sm:mt-20 flex flex-wrap justify-center gap-6 sm:gap-7 px-2 sm:px-4">
+          {certificates.map((certificate, index) => (
+            <CertificateCard
+              key={`certificate-${index}`}
+              index={index}
+              {...certificate}
+            />
+          ))}
+        </div>
       </div>
     </>
   );
