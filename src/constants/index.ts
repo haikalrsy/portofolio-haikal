@@ -86,7 +86,7 @@ const experiences: TExperience[] = [
     companyName: "Cyber",
     icon: cyber,
     iconBg: "#ff0000ff",
-    date: "Jan 2021 - Feb 2022",
+    date: "2025-Present",
     points: [
      "Mempelajari dasar-dasar keamanan siber, termasuk enkripsi, firewall, dan keamanan jaringan.",
   "Melakukan simulasi Ethical Hacking dan Penetration Testing untuk mengidentifikasi serta mengamankan celah pada sistem.",
@@ -172,40 +172,40 @@ const projects: TProject[] = [
       { name: "JS", color: "pink-text-gradient" },
     ],
     image: carrent,
-    sourceCodeLink: "https://github.com/",
+    sourceCodeLink: "https://github.com/haikalrsy/sekolah-sehat",
   },
   // Project tambahanmu
   {
     name: "Global Vista",
-    description: "Deskripsi project 1",
+    description: "Website lomba di Smkn 8",
     tags: [
-      { name: "react", color: "text-blue-500" },
-      { name: "nodejs", color: "text-green-500" },
+      { name: "Tailwind", color: "text-blue-500" },
+      { name: "Scss", color: "text-green-500" },
     ],
     image: globalvista,
-    sourceCodeLink: "https://github.com/yourname/project1",
+    sourceCodeLink: "https://github.com/haikalrsy/lomba",
   },
    {
     name: "retrolux",
-    description: "Merupakan Website pertama saya",
+    description: "Merupakan Website project akhir saya di Smkn 46",
     tags: [
-      { name: "HTML", color: "blue-text-gradient" },
-      { name: "CSS", color: "green-text-gradient" },
-      { name: "JS", color: "pink-text-gradient" },
+      { name: "Html", color: "blue-text-gradient" },
+      { name: "Tailwind", color: "green-text-gradient" },
+      { name: "Js", color: "pink-text-gradient" },
     ],
     image: retrolux,
     sourceCodeLink: "https://github.com/haikalrsy/retro-lux",
   },
    {
     name: "46 Tech",
-    description: "Merupakan Website pertama saya",
+    description: "Merupakan Website Lomba saya di uty",
     tags: [
       { name: "HTML", color: "blue-text-gradient" },
       { name: "CSS", color: "green-text-gradient" },
       { name: "JS", color: "pink-text-gradient" },
     ],
     image: AI,
-    sourceCodeLink: "https://github.com/",
+    sourceCodeLink: "https://github.com/haikalrsy/46tecch",
   },
 ];
 
