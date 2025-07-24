@@ -26,7 +26,8 @@ const ProjectCard: React.FC<{ index: number } & TProject> = ({
       tiltMaxAngleY={30}
       glareColor="#867bcaff"
     >
-      <div className="bg-tertiary w-full rounded-2xl p-5 sm:w-[300px]">
+<div className="bg-tertiary w-full rounded-2xl p-5 sm:w-[300px] border border-white">
+
         <div className="relative h-[230px] w-full">
           <img
             src={image}
@@ -78,7 +79,8 @@ const CertificateCard: React.FC<{ index: number } & TCertificate> = ({
       tiltMaxAngleY={30}
       glareColor="#867bcaff"
     >
-      <div className="bg-tertiary w-full rounded-2xl p-5 sm:w-[300px]">
+<div className="bg-tertiary w-full rounded-2xl p-5 sm:w-[300px] border border-white">
+
         <div className="relative h-[230px] w-full">
           <img
             src={image}
